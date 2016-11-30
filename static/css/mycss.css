@@ -1,0 +1,167 @@
+body {
+    background-color: #394a58;
+    margin: 0;
+    padding: 0;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #394a58;
+}
+
+#navbar {
+    background-color: white;
+    height: 80px;
+    line-height: 80px;
+    color: #394a58;
+}
+
+#logo {
+    font-size: 25px;
+    font-weight: 500;
+    float: left;
+}
+
+#login {
+    float: right;
+}
+
+main {
+    padding-top: 50px;
+    color: white;
+}
+
+main #section_1 {
+    padding: 20px 0 0 0;
+}
+
+main .intro {
+    padding: 10px 0 0 0;
+    margin-top: 20px;
+}
+
+main .intro p {
+    font-size: 12px;
+}
+
+main #section_2 {
+
+    padding: 20px 0 0 0;
+}
+
+main #section_2 #bt1 {
+    background-color: transparent;
+    border: solid 1px;
+    border-right: none;
+    border-bottom: none;
+    margin: 0;
+    padding: 10px 15px;
+    float: left;
+    height: 40px;
+}
+
+input {
+    color: black;
+}
+
+main #section_2 #bt2 {
+    background-color: transparent;
+    border: solid 1px;
+    /*border-bottom: none;*/
+    margin: 0;
+    padding: 10px 15px;
+    float: left;
+    height: 40px;
+}
+
+main #section_2 #rest {
+    background-color: transparent;
+    border: solid 1px;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    margin: 0;
+    padding: 10px 15px;
+    float: left;
+    height: 40px;
+}
+
+main #section_2 #content_login {
+    border: solid 1px;
+    border-top: none;
+    height: 350px;
+    padding: 20px 10px;
+    display: block;
+
+}
+
+main #section_2 #content_register {
+    border: solid 1px;
+    border-top: none;
+    height: 350px;
+    padding: 20px 10px;
+    display: none;
+}
+
+#grey_area {
+    background-color: #5d6a75;
+    height: 120px;
+    margin-top: 80px;
+    padding: 20px 50px 10px 20px;
+}
+
+#reg {
+    cursor: pointer;
+    color: white;
+}
+
+.inputfield {
+    height: 35px;
+}
+
+.blueline {
+    margin: 0;
+    padding: 0;
+    border-top: solid #34b9ff 2px;
+}
+
+.button {
+    height: 35px;
+    background-color: #34b9ff;
+    border: none;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+.errors {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.rotate_ {
+
+    /* Safari */
+    -webkit-transform: rotate(-180deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-180deg);
+
+    /* IE */
+    -ms-transform: rotate(-180deg);
+
+    /* Opera */
+    -o-transform: rotate(-180deg);
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+
+    transform: rotate(-180deg);
+
+}
+
+footer{
+    height: 80px;
+}

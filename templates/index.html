@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atkins Login</title>
+
+    <!-- CSS and JavaScript files load earlier here-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"#}
+    {#          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">#}
+
+    <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css">
+
+    <!-- jquery file CDN (should above the bootstrap.min.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+
+<nav class="col-md-12" id="navbar">
+    <div class="col-md-6 col-md-offset-3">
+        <div id="logo"><div class="rotate_" style="float: left">V</div>TKINS</div>
+        {% if user.is_authenticated %}
+            <div id="login"><a href="/logout/">Log out</a></div>
+        {% else %}
+            <div id="login"><a href="/">Log in</a></div>
+        {% endif %}
+    </div>
+</nav>
+
+
+<main class="container-fluid">
+
+    {% if user.is_authenticated %}
+        <div class="col-md-6 col-md-offset-3">
+            <h3>Hi {{ user.first_name }}</h3>
+            you have succefully logged in
+        </div>
+    {% else %}
+        {% if registed == True %}
+            <div class="col-md-6 col-md-offset-3">
+                <h3>Thank you for registering</h3>
+            </div>
+        {% else %}
+            <div class="row">
+                <section class="col-md-6 col-md-offset-3" id="section_1">
+                    <h2>Welcome to TEST</h2>
+                    <div class="col-md-5 intro">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+
+                            elit. Pellentesque volutpat vestibulum diam in varius.
+
+                            Suspendisse eu bibendum massa.<br/>
+
+                            Suspendisse potenti. Quisque eget malesuada</p>
+                    </div>
+                    <div class="col-md-5 col-md-offset-1 intro">
+                        <p>mauris, sed euismod mi. Aenean sed ornare tellus.
+
+                            Integer elementum maximus dictum. Ut in viverra
+
+                            justo. Proin convallis est et purus accumsan gravida.
+
+                            Vestibulum leo dui, tincidunt sed elit sit amet, finibus.</p>
+                    </div>
+                </section>
+
+                <section class="col-md-6 col-md-offset-3" id="section_2">
+                    <div id="tabs">
+                        <button id="bt1" class="col-md-2">LOG IN</button>
+                        <button id="bt2" class="col-md-2">REGISTER</button>
+                        <div class="col-md-8" id="rest"></div>
+                    </div>
+                    <div class="col-md-12" id="content_login">
+                        <div class="col-md-5">
+                            <h3>Log in to TEST</h3>
+                            <form id="login_form" method="post" action="/login/">
+                                {% csrf_token %}
+                                <div>
+                                    <p>E-mail address
+                                        <span class="errors">{{ email_error }}</span>
+                                    </p>
+                                    <div class="blueline">
+                                        <input type="text" class="inputfield col-md-12" name="email"
+                                               id="email">
+                                    </div>
+                                </div>
+
+                                <div style="padding:40px 0 10px 0">
+                                    <p>Password
+                                        <span class="errors">
+                                            {{ password_error }}
+                                        </span>
+                                    </p>
+                                    <div class="blueline">
+                                        <input type="password" class="inputfield col-md-12" name="password"
+                                               id="password">
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <input class="button col-md-7 col-md-offset-5" type="submit" value="Log in"/>
+                            </form>
+
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-1" id="grey_area">
+                            <p><b>Not yet registered for a Test account?</b></p>
+                            <p><a id="reg">Click here to register</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" id="content_register">
+                        <div class="col-md-12">
+                            <h3>Register for TEST</h3>
+
+                            <form id="user_form" method="post" action="/register/"
+                                  enctype="multipart/form-data">
+
+                                {% csrf_token %}
+
+                                <!-- Display each form. The as_p method wraps each element in a paragraph
+                                     (<p>) element. This ensures each element appears on a new line,
+                                     making everything look neater. -->
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <p>{{ user_form.first_name.label }}*
+
+                                            <span class="errors">
+                                                {% for error in user_form.first_name.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </span>
+                                        </p>
+                                        <div class="blueline">{{ user_form.first_name }}</div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <p>{{ user_form.username.label }}*
+                                            <span class="errors">
+                                                {% for error in user_form.username.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </span>
+                                        </p>
+                                        <div class="blueline">{{ user_form.username }}</div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>{{ user_form.password1.label }}*
+                                            <span class="errors">
+                                                {% for error in user_form.password1.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </span>
+                                        </p>
+                                        <div class="blueline">{{ user_form.password1 }}</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <p>{{ user_form.password2.label }}*
+                                            <span class="errors">
+                                                {% for error in user_form.non_field_errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                                {% for error in user_form.password2.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </span>
+                                        </p>
+                                        <div class="blueline">{{ user_form.password2 }}</div>
+
+                                    </div>
+
+                                </div>
+                                <br/>
+                                <!-- Provide a button to click to submit the form. -->
+                                <input class="button col-md-3 col-md-offset-9" type="submit" name="submit"
+                                       value="Register"/>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                </section>
+
+
+            </div>
+        {% endif %}
+    {% endif %}
+
+
+</main>
+
+
+<footer>
+
+</footer>
+
+
+<!-- JavaScript files load later here-->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#id_first_name,#id_username,#id_password1,#id_password2').addClass('col-md-12 inputfield');
+
+        $('#bt1').click(function () {
+            $('#content_login').css({display: 'block'});
+            $('#content_register').css({display: 'none'});
+            $('#bt1').css({'border-bottom': 'none'});
+            $('#bt2').css({'border-bottom': 'solid 1px'});
+
+        });
+
+        $('#bt2,#reg').click(function () {
+            $('#content_register').css({display: 'block'});
+            $('#content_login').css({display: 'none'});
+            $('#bt1').css({'border-bottom': 'solid 1px'});
+            $('#bt2').css({'border-bottom': 'none'});
+        });
+
+        {% if registed == False %}
+            $('#bt2').click();
+        {% endif %}
+
+    });
+</script>
+
+</body>
+</html>
