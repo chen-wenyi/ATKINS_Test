@@ -21,8 +21,8 @@
 </head>
 <body>
 
-<nav class="col-md-12" id="navbar">
-    <div class="col-md-6 col-md-offset-3">
+<nav class="col-xs-12" id="navbar">
+    <div class="col-xs-6 col-xs-offset-3">
         <div id="logo"><div class="rotate_" style="float: left">V</div>TKINS</div>
         {% if user.is_authenticated %}
             <div id="login"><a href="/logout/">Log out</a></div>
@@ -36,20 +36,20 @@
 <main class="container-fluid">
 
     {% if user.is_authenticated %}
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-xs-6 col-xs-offset-3">
             <h3>Hi {{ user.first_name }}</h3>
             you have succefully logged in
         </div>
     {% else %}
         {% if registed == True %}
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-xs-6 col-xs-offset-3">
                 <h3>Thank you for registering</h3>
             </div>
         {% else %}
             <div class="row">
-                <section class="col-md-6 col-md-offset-3" id="section_1">
+                <section class="col-xs-12 col-md-6 col-md-offset-3" id="section_1">
                     <h2>Welcome to TEST</h2>
-                    <div class="col-md-5 intro">
+                    <div class="col-xs-5 intro">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing
 
                             elit. Pellentesque volutpat vestibulum diam in varius.
@@ -58,8 +58,8 @@
 
                             Suspendisse potenti. Quisque eget malesuada</p>
                     </div>
-                    <div class="col-md-5 col-md-offset-1 intro">
-                        <p>mauris, sed euismod mi. Aenean sed ornare tellus.
+                    <div class="col-xs-5 col-xs-offset-1 intro">
+                        <p>mauris, sed euixsod mi. Aenean sed ornare tellus.
 
                             Integer elementum maximus dictum. Ut in viverra
 
@@ -69,14 +69,14 @@
                     </div>
                 </section>
 
-                <section class="col-md-6 col-md-offset-3" id="section_2">
+                <section class="col-xs-12 col-md-6 col-md-offset-3" id="section_2">
                     <div id="tabs">
-                        <button id="bt1" class="col-md-2">LOG IN</button>
-                        <button id="bt2" class="col-md-2">REGISTER</button>
-                        <div class="col-md-8" id="rest"></div>
+                        <button id="bt1" class="col-xs-2">LOG IN</button>
+                        <button id="bt2" class="col-xs-2">REGISTER</button>
+                        <div class="col-xs-8" id="rest"></div>
                     </div>
-                    <div class="col-md-12" id="content_login">
-                        <div class="col-md-5">
+                    <div class="col-xs-12" id="content_login">
+                        <div class="col-xs-5">
                             <h3>Log in to TEST</h3>
                             <form id="login_form" method="post" action="/login/">
                                 {% csrf_token %}
@@ -85,7 +85,7 @@
                                         <span class="errors">{{ email_error }}</span>
                                     </p>
                                     <div class="blueline">
-                                        <input type="text" class="inputfield col-md-12" name="email"
+                                        <input type="text" class="inputfield col-xs-12" name="email"
                                                id="email">
                                     </div>
                                 </div>
@@ -97,24 +97,24 @@
                                         </span>
                                     </p>
                                     <div class="blueline">
-                                        <input type="password" class="inputfield col-md-12" name="password"
+                                        <input type="password" class="inputfield col-xs-12" name="password"
                                                id="password">
                                     </div>
                                 </div>
                                 <br/><br/>
-                                <input class="button col-md-7 col-md-offset-5" type="submit" value="Log in"/>
+                                <input class="button col-xs-7 col-xs-offset-5" type="submit" value="Log in"/>
                             </form>
 
                         </div>
 
-                        <div class="col-md-5 col-md-offset-1" id="grey_area">
+                        <div class="col-xs-5 col-xs-offset-1" id="grey_area">
                             <p><b>Not yet registered for a Test account?</b></p>
                             <p><a id="reg">Click here to register</a></p>
                         </div>
                     </div>
 
-                    <div class="col-md-12" id="content_register">
-                        <div class="col-md-12">
+                    <div class="col-xs-12" id="content_register">
+                        <div class="col-xs-12">
                             <h3>Register for TEST</h3>
 
                             <form id="user_form" method="post" action="/register/"
@@ -126,7 +126,7 @@
                                      (<p>) element. This ensures each element appears on a new line,
                                      making everything look neater. -->
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
 
                                         <p>{{ user_form.first_name.label }}*
 
@@ -140,7 +140,7 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <p>{{ user_form.username.label }}*
                                             <span class="errors">
                                                 {% for error in user_form.username.errors %}
@@ -153,7 +153,7 @@
                                 </div>
                                 <br/>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <p>{{ user_form.password1.label }}*
                                             <span class="errors">
                                                 {% for error in user_form.password1.errors %}
@@ -164,7 +164,7 @@
                                         <div class="blueline">{{ user_form.password1 }}</div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <p>{{ user_form.password2.label }}*
                                             <span class="errors">
                                                 {% for error in user_form.non_field_errors %}
@@ -182,7 +182,7 @@
                                 </div>
                                 <br/>
                                 <!-- Provide a button to click to submit the form. -->
-                                <input class="button col-md-3 col-md-offset-9" type="submit" name="submit"
+                                <input class="button col-xs-3 col-xs-offset-9" type="submit" name="submit"
                                        value="Register"/>
                             </form>
 
@@ -215,7 +215,7 @@
 <script>
     $(document).ready(function () {
 
-        $('#id_first_name,#id_username,#id_password1,#id_password2').addClass('col-md-12 inputfield');
+        $('#id_first_name,#id_username,#id_password1,#id_password2').addClass('col-xs-12 inputfield');
 
         $('#bt1').click(function () {
             $('#content_login').css({display: 'block'});
